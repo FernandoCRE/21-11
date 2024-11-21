@@ -28,7 +28,7 @@ size_t PointArray::getSize() const {
     return size;
 }
 
-// añadir un punto al final del arreglo
+// añadir un punto al final
 void PointArray::push_back(const Punto& p) {
     Punto* tmp = new Punto[size + 1];
     for (size_t i{0}; i < size; i++) {
@@ -40,7 +40,7 @@ void PointArray::push_back(const Punto& p) {
     points[size - 1] = p;
 }
 
-// insertar un punto en una posición específica
+// insertar un punto en una pos
 void PointArray::insert(const Punto& p, int pos) {
     if (pos < 0 || pos > size) return;
 
@@ -57,7 +57,7 @@ void PointArray::insert(const Punto& p, int pos) {
     points = tmp;
 }
 
-// eliminar un punto de una posición específica
+// eliminar un punto de una pos
 void PointArray::remove(int pos) {
     if (pos < 0 || pos >= size) return;
 
@@ -74,7 +74,7 @@ void PointArray::remove(int pos) {
     points = tmp;
 }
 
-// sobrecarga del operador <<
+
 std::ostream& operator<<(std::ostream& output, const PointArray& pa) {
     output << "[ ";
     for (size_t i{0}; i < pa.size; ++i) {
@@ -86,9 +86,9 @@ std::ostream& operator<<(std::ostream& output, const PointArray& pa) {
 
 PointArray& PointArray::operator=(const PointArray& other) {
     if (this == &other) {
-        return *this; // evitar autoasignación
+        return *this;
     }
-    delete[] points; // liberar memoria existente
+    delete[] points; 
     size = other.size;
     points = new Punto[size];
     for (size_t i{0}; i < size; ++i) {
@@ -100,14 +100,14 @@ PointArray& PointArray::operator=(const PointArray& other) {
 
 bool PointArray::operator==(const PointArray& other) const {
     if (size != other.size) {
-        return false; // los tamaños son diferentes
+        return false; tamaños son diferentes
     }
     for (size_t i{0}; i < size; ++i) {
-        if (!(points[i] == other.points[i])) { // usa el operador == de Punto
+        if (!(points[i] == other.points[i])) { 
             return false;
         }
     }
-    return true; // todos los puntos son iguales
+    return true; 
 }
 
 bool PointArray::operator!=(const PointArray& other) const {
